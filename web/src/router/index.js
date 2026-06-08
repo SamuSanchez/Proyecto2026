@@ -6,6 +6,7 @@ import {errorMsg} from "@/utils/message.js";
 // Comentario en espanol
 const whiteList = ['/login', '/401', '/404']
 const modules = import.meta.glob('@/views/**/*.vue')
+Object.keys(modules).forEach(key => console.log('Modulo:', key))
 // Comentario en espanol
 router.beforeEach((to, from, next) => {
     console.log('Ruta solicitada: ' + to.path)
