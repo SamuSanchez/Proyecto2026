@@ -1,0 +1,25 @@
+server:
+  port: 8415
+
+spring:
+  #postgresql
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    url: jdbc:postgresql://localhost:5432/proyecto2026
+    username: postgres
+    password: admin
+    hikari:
+      connection-timeout: 5000
+      maximum-pool-size: 10
+      idle-timeout: 3000
+      max-lifetime: 50000
+
+  # Comentario en espanol
+  mvc:
+    async:
+      request-timeout: 5000ms
+
+#mybatis-plus
+mybatis-plus:
+  mapper-locations: classpath:mapper/*.xml
+
