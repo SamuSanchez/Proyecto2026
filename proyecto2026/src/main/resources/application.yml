@@ -1,5 +1,0 @@
-spring:
-  # Comentario en espanol
-  profiles:
-    active: dev
-

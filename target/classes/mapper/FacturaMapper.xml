@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ems.system.mapper.FacturaMapper">
+
+    <select id="queryFacturaTable" resultType="com.ems.system.entity.Factura">
+        SELECT
+            id,
+            nombre,
+            nit,
+            total,
+            create_time AS createTime,
+            update_time AS updateTime
+        FROM app_factura
+        <where>
+            <if test="blurry != null and blurry != ''">
+                nombre ILIKE CONCAT('%', #{blurry}, '%')
+                OR nit ILIKE CONCAT('%', #{blurry}, '%')
+            </if>
+        </where>
+        ORDER BY id DESC
+    </select>
+
+</mapper>
