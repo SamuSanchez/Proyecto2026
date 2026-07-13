@@ -48,5 +48,11 @@ const width = ref('230px')
   }
   .el-main{
     padding: 0;
+    height: calc(100vh - 60px);
+    overflow: auto;
+    min-height: 0;
+  }
+  .el-container{
+    height: 100vh;
   }
 </style>

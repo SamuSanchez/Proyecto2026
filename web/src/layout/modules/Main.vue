@@ -59,6 +59,7 @@ const removeTab = (name) => {
   height: calc(100vh - 120px);
   padding-left: 30px;
   padding-right: 30px;
+  overflow-y: auto;
 }
  :deep(.el-tabs__nav-wrap){
   height: 40px;
