@@ -101,6 +101,7 @@ export function addRoute(){
         routerList.forEach(item => {
             if (item.path){
                 const componentPath = `/src/views/${item.component}`
+                console.log('Intentando registrar ruta:', item.path, '| componente:', componentPath, '| encontrado:', !!modules[componentPath])
                 router.addRoute('Layout', {
                     path: item.path,
                     name: item.name,
