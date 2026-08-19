@@ -115,8 +115,9 @@
 </template>
 <script setup>
 import {onMounted} from 'vue';
-import {getMiFacturaList, getMiFacturaInfo} from '../../api/mifactura/mifactura';
+import {editMiFactura, getMiFacturaList, getMiFacturaInfo, delMiFactura} from '../../api/mifactura/mifactura';
 import {reactive, ref, computed} from 'vue';
+import { ElMessageBox, ElMessage } from 'element-plus';
 const state = reactive ({
     tableData: []
 })
@@ -166,11 +167,15 @@ const abrirAdicionar = () =>{
 }
 
 const abrirModificar = (row) =>{
+    console.log('modificar')
     getMiFacturaInfo({id: row.id}).then((res)=>{
         if (res.success){
             const data = res.data
             facturaForm.id = data.id
-           
+            facturaForm.nombre = data.nombre
+            facturaForm.nit = data.nit
+            facturaForm.total = data.total
+            detalleForm.value = data.detalle || []
         }
     })
     dialogVisible.value = true
@@ -201,7 +206,23 @@ const totalFactura = computed(()=>{
 })
 
 const guardarFactura =()=>{
+ElMessageBox.confirm(
+    'Está seguro de eliminar la factura?'+ row.id + '?',
+    'Confirmar', {
+    confirmButtonText: 'Sí',
+    cancelButtonText: 'No',
+    type: 'warning',
+}
 
+).then(()=>{
+    delMiFactura({id: row.id}).then((res)=>{
+        if (res.success){
+            listarFacturas()
+        }else{
+            alert(res.msg)
+        }
+    }) 
+})
 }
 
 </script>
