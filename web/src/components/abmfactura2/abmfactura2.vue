@@ -1,5 +1,9 @@
 <template>
     <div>
+     <div>
+      <el-input v-model="state.blurry" placeholder="Introduce nombre o nit" clearable></el-input>
+      <el-button type="primary" @click="listarFacturas">Buscar</el-button>
+        </div>
         <el-card>
             <h1>ABM Factura</h1>
         <el-button type="primary" @click="abrirAdicionar">
@@ -78,6 +82,7 @@ onMounted(() => {
 })
 const listarFacturas = () => {
   const params = {
+    blurry: state.blurry,
     size: state.size,
     currentPage: state.current,
   }
