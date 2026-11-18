@@ -14,12 +14,13 @@ import java.util.List;
 public class FacturaDto {
 
     private Long id;
-
+    
     private String nombre;
-
+    
     private String nit;
-
+    
     private BigDecimal total;
+    
 
     private List<FacturaDetalleDto> detalles;
 }
